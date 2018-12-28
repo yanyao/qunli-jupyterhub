@@ -7,15 +7,15 @@
 
 <div class="container">
   <div class="row">
-    <div class="text-center">
+    <div style="margin-top: 10px;">
       {% if default_server.active %}
         <a id="stop" role="button" class="btn btn-lg btn-danger">
-          Stop My Server
+        关闭服务
         </a>
       {% endif %}
       <a id="start" role="button" class="btn btn-lg btn-primary" href="{{ url }}">
       {% if not default_server.active %}Start{% endif %}
-      My Server
+        进入服务
       </a>
     </div>
   </div>
