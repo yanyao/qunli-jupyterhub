@@ -4,9 +4,8 @@ Run with old versions of jupyterhub to test upgrade/downgrade
 
 used in test_db.py
 """
-
-from datetime import datetime
 import os
+from datetime import datetime
 
 import jupyterhub
 from jupyterhub import orm
@@ -14,7 +13,10 @@ from jupyterhub import orm
 
 def populate_db(url):
     """Populate a jupyterhub database"""
-    db = orm.new_session_factory(url)()
+    connect_args = {}
+    if 'mysql' in url:
+        connect_args['auth_plugin'] = 'mysql_native_password'
+    db = orm.new_session_factory(url, connect_args=connect_args)()
     # create some users
     admin = orm.User(name='admin', admin=True)
     db.add(admin)
@@ -90,6 +92,7 @@ def populate_db(url):
 
 if __name__ == '__main__':
     import sys
+
     if len(sys.argv) > 1:
         url = sys.argv[1]
     else:

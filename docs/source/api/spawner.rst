@@ -13,10 +13,9 @@ Module: :mod:`jupyterhub.spawner`
 ----------------
 
 .. autoconfigurable:: Spawner
-    :members: options_from_form, poll, start, stop, get_args, get_env, get_state, template_namespace, format_string
+    :members: options_from_form, poll, start, stop, get_args, get_env, get_state, template_namespace, format_string, create_certs, move_certs
 
 :class:`LocalProcessSpawner`
 ----------------------------
 
 .. autoconfigurable:: LocalProcessSpawner
-
